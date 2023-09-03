@@ -1,0 +1,68 @@
+<BoxLayoutExample>:
+
+    BoxLayout:
+        padding: 40
+        spacing: 25
+        orientation: "vertical"
+        canvas.before:
+            Color:
+                rgb: (1, 1, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+
+        ToggleButton:
+            text: "S O U N D  O N"
+            size_hint: 1, 0.5
+            on_state: root.on_toggle_button_state(self)
+
+        BoxLayout:
+            spacing: 25
+
+            Label:
+                id:1
+                font_name: "Assets/Roboto-Bold"
+                font_size: "24dp"
+                pos_hint: {"right": 1 }
+                text: root.count_head_text
+                color: (16/255.0, 16/255.0, 61/255.0, 1)
+
+
+
+            Label:
+                id:win_label
+                font_size: "24dp"
+                font_name: "Assets/Roboto-Bold"
+                text: root.count_tail_text
+                color: (16/255.0, 16/255.0, 61/255.0, 1)
+
+
+
+        Image:
+            id: image_widget
+            size_hint: 1, "4dp"
+            pos_hint: {"center_x": 0.5}
+            anim_delay: -0
+            anim_loop: 5
+            source: root.default_image
+
+        Label:
+            id:Row_Label
+            pos_hint: {'center_y': 0.5}
+            font_size: "24dp"
+            font_name: "Assets/Roboto-Bold"
+            text: root.result_text
+            color: (16/255.0, 16/255.0, 61/255.0, 1)
+
+
+        Button:
+            id: flip_button
+            text: "F L I P"
+            font_size: "32"
+            font_name: "Assets/Roboto-Bold"
+            size_hint: 1, 1
+            background_normal: "Assets/flip_button.png"
+            background_down: "Assets/flip_button_pressed.png"
+            background_disabled_normal: "Assets/flip_button.png"
+            on_release: root.disable_button_for_delay(self, 1.25); root.flip_coin(); root.Play_sound();
